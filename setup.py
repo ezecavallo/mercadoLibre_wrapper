@@ -5,7 +5,6 @@ from setuptools import setup
 setup(name='mercadolibre_wrapper',
       version='0.1',
       description='',
-      url='#',
       author='',
       author_email='',
       license='MIT',
