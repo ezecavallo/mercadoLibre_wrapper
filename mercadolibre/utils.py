@@ -21,9 +21,9 @@ class CustomHTTPHandler(SimpleHTTPRequestHandler):
         self.server.shutdown()
 
 
-def wait_for_request(url, server_class=ThreadingHTTPServer):
+def wait_for_request(url, port, server_class=ThreadingHTTPServer):
     webbrowser.open(url)
-    server_address = ('', 1443)
+    server_address = ('', port)
     httpd = server_class(server_address, CustomHTTPHandler)
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,

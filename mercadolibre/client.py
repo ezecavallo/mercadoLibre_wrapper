@@ -79,14 +79,14 @@ class MercadoLibre(object):
             self.expires_at = expires_at
             self.access_token = data['access_token']
             self.user_id = data['user_id']
-            # self._refresh_token = data['refresh_token']
+            self._refresh_token = data.get('refresh_token', None)
         return response
 
     def _get_access_token(self, redirect_uri):
         """Changing authorization code to access token."""
 
         response = requests.get(self.authorization_url(redirect_uri))
-        code = wait_for_request(response.url)
+        code = wait_for_request(response.url, 1443)
 
         params = {
             'client_id': self.client_id,
